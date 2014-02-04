@@ -55,5 +55,4 @@ feature "Registered user logs in", %q{
       expect(page).to have_content("Invalid email or password")
     end
   end
-
 end

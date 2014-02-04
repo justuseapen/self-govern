@@ -13,7 +13,7 @@ SELF-GOVERN
 4.  Rank determines Feature and Law development priority.
 5.  Prompts, Choices, and Votes are all user-generated.
 6.  Each prompt and choice has a discussion panel.
-7.  Laws must be readily understood by non-technical people and may only be changed,abolished, or amended by majority vote.
+7.  Laws must be readily understood by non-technical people and may only be changed, abolished, or amended by majority vote.
 
  ^ The first seven laws. Written shortly after midnight January 28th 2013.
 
