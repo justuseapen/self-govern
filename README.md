@@ -18,13 +18,13 @@ SELF-GOVERN
  ^ The first seven laws. Written shortly after midnight January 28th 2013.
 
 #ELECTIONS:
-  Should Dan Carter be a collaborator?
-    1. Justus Eapen - Aye
+###Should Dan Carter be a collaborator?
+1. Justus Eapen - Aye
 
-  Should this be a Rails app?
-    1. Justus Eapen - Aye
-    2. Dan Carter - Aye
+###Should this be a Rails app?
+1. Justus Eapen - Aye
+2. Dan Carter - Aye
 
-  Should we just start with a simple authentication system instead of Facebook?
-    1. Justus Eapen - Aye
-    2. Dan Carter - Aye
+###Should we just start with a simple authentication system instead of Facebook?
+1. Justus Eapen - Aye
+2. Dan Carter - Aye
