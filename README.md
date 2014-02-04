@@ -28,3 +28,13 @@ SELF-GOVERN
 ###Should we just start with a simple authentication system instead of Facebook?
 1. Justus Eapen - Aye
 2. Dan Carter - Aye
+
+###Should Ajay be a collaborator?
+1. Justus Eapen - Abstained
+2. Dan Carter - Aye
+3. Ajay Vallabh - Aye
+
+###Should only collaborators be able to vote on anything related to collaborators? (github collaborators)
+1. Justus Eapen - Aye
+2. Dan Carter - Aye
+3. Ajay Vallabh - Aye
