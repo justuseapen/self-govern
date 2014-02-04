@@ -24,3 +24,7 @@ SELF-GOVERN
   Should this be a Rails app?
     1. Justus Eapen - Aye
     2. Dan Carter - Aye
+
+  Should we just start with a simple authentication system instead of Facebook?
+    1. Justus Eapen - Aye
+    2. Dan Carter - Aye
