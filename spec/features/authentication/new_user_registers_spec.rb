@@ -23,6 +23,8 @@ feature "New user creates an account", %q{
       fill_in "Password confirmation", with: "passw0rd"
 
       click_on "Sign up"
+
+      expect(page).to have_content("You have signed up successfully.")
     end
   end
 
