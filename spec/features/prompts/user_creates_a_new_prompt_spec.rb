@@ -20,11 +20,12 @@ feature "User creates a new prompt", %q{
   context "user supplies text" do
     it "creates a new prompt" do
       visit root_path
+
       click_on "Add prompt"
 
-      fill_in "Prompt text", with: "Should the background be pink?"
+      fill_in "Text", with: "Should the background be pink?"
 
-      click_on "Create prompt"
+      click_on "Create Prompt"
 
       expect(page).to have_content("Your prompt was successfully added")
     end
@@ -35,9 +36,9 @@ feature "User creates a new prompt", %q{
       visit root_path
       click_on "Add prompt"
 
-      click_on "Create prompt"
+      click_on "Create Prompt"
 
-      expect(page).to have_content("Your prompt must have text")
+      expect(page).to have_content("Text can't be blank")
     end
   end
 end
