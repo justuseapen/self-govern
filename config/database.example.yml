@@ -1,0 +1,21 @@
+#DON'T FORGET TO EDIT THIS TO REFLECT YOUR PROJECT!
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: self_govern_development
+  pool: 5
+  password:
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: self_govern_test
+  pool: 5
+  password:
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: self_govern_production
+  pool: 5
+  password:
