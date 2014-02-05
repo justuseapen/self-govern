@@ -13,4 +13,12 @@ FactoryGirl.define do
     end
     user
   end
+
+  factory :choice do
+    sequence :text do |n|
+      "Choice #{n}"
+    end
+    user
+    prompt
+  end
 end
