@@ -3,7 +3,7 @@ require 'spec_helper'
 feature "User creates a new prompt", %q{
   As a registered user
   I want to create a prompt
-  So that others cna see and vote on it
+  So that others can see and vote on it
 } do
 
   # Acceptance Criteria:
