@@ -4,14 +4,14 @@ feature "signed in users can vote and unvote for prompts" do
   user = FactoryGirl.create(:user)
   scenario "authenticated user votes for prompt" do
     prompt = FactoryGirl.create(:prompt)
-    visit root_path
+    visit prompt_path(prompt)
     sign_in_as(user)
     click_button("up")
     expect(page).to have_content("You've successfully voted for")
   end
   scenario "authenticated user unvotes for prompt" do
     prompt = FactoryGirl.create(:prompt)
-    visit root_path
+    visit prompt_path(path)
     sign_in_as(user)
     click_button("down")
     expect(page).to have_content("You've removed your vote")
