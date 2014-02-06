@@ -9,6 +9,7 @@ gem "jquery-rails"
 gem "jbuilder", "~> 1.2"
 gem "devise"
 gem "simple_form"
+gem 'acts_as_votable', '~> 0.8.0'
 group :doc do
   gem "sdoc", require: false
 end

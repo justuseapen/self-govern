@@ -1,5 +1,9 @@
 <h1><%= @prompt.text %></h1>
-<% @choices.each do |x| %>
-<%= x.text %>
+
+<% @choices.each do |choice| %>
+  <%= choice.text %><br />
 <% end %>
-<h2><%= render "./choices/form",prompt:@prompt,choice:@choice %>
+
+<% if current_user %>
+  <h2><%= render "./choices/form",prompt:@prompt,choice:@choice %>
+<% end %>

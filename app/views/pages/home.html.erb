@@ -6,8 +6,15 @@
   <%= link_to "Sign up", new_user_registration_path %>
 <% end %>
 
-<% @prompts.each do |prompt| %>
+<br />
 
-  <%= link_to prompt.text, prompt_path(prompt) %>
-  <br>
+<% @prompts.each do |prompt| %>
+  <% if current_user %>
+    <% if Vote.where("votable_id = #{prompt.id} AND voter_id = #{current_user.id}").first %>
+      <%= link_to "Unvote", unvote_prompt_path(prompt) %>
+    <% else %>
+      <%= link_to "Vote", vote_prompt_path(prompt) %>
+    <% end %>
+  <% end %>
+  <%= link_to prompt.text, prompt_path(prompt) %><br />
 <% end %>
