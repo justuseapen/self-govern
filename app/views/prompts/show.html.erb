@@ -1,9 +1,16 @@
 <h1><%= @prompt.text %></h1>
 
 <% @choices.each do |choice| %>
+  <% if current_user %>
+    <% if current_user.voted_for? choice %>
+      <%= link_to "Unvote", unvote_choice_path(choice) %>
+    <% else %>
+      <%= link_to "Vote", vote_choice_path(choice) %>
+    <% end %>
+  <% end %>
   <%= choice.text %><br />
 <% end %>
 
 <% if current_user %>
-  <h2><%= render "./choices/form",prompt:@prompt,choice:@choice %>
+  <h2><%= render "./choices/form",prompt:@prompt,choice:@choice %></h2>
 <% end %>

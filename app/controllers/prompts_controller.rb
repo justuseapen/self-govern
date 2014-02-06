@@ -27,7 +27,7 @@ class PromptsController < ApplicationController
 
   def unvote
     @prompt = Prompt.find(params[:prompt_id])
-    Vote.where("votable_id = #{@prompt.id} AND voter_id = #{current_user.id}").first.destroy
+    @prompt.unliked_by current_user
     redirect_to root_path
   end
 

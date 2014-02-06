@@ -10,7 +10,7 @@
 
 <% @prompts.each do |prompt| %>
   <% if current_user %>
-    <% if Vote.where("votable_id = #{prompt.id} AND voter_id = #{current_user.id}").first %>
+    <% if current_user.voted_for? prompt %>
       <%= link_to "Unvote", unvote_prompt_path(prompt) %>
     <% else %>
       <%= link_to "Vote", vote_prompt_path(prompt) %>
