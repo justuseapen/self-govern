@@ -19,6 +19,18 @@ class PromptsController < ApplicationController
     @choice = Choice.new
   end
 
+  def vote
+    @prompt = Prompt.find(params[:prompt_id])
+    @prompt.liked_by current_user
+    redirect_to root_path
+  end
+
+  def unvote
+    @prompt = Prompt.find(params[:prompt_id])
+    Vote.where("votable_id = #{@prompt.id} AND voter_id = #{current_user.id}").first.destroy
+    redirect_to root_path
+  end
+
   private
 
   def prompt_params
