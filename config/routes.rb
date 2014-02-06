@@ -5,8 +5,11 @@ SelfGovern::Application.routes.draw do
     resources :choices
   end
 
-  get "vote/:prompt_id", to: "prompts#vote", as: "vote_prompt"
-  get "unvote/:prompt_id", to: "prompts#unvote", as: "unvote_prompt"
+  get "prompt/vote/:prompt_id", to: "prompts#vote", as: "vote_prompt"
+  get "prompt/unvote/:prompt_id", to: "prompts#unvote", as: "unvote_prompt"
+
+  get "choice/vote/:choice_id", to: "choices#vote", as: "vote_choice"
+  get "choice/unvote/:choice_id", to: "choices#unvote", as: "unvote_choice"
 
   root 'pages#home'
 end

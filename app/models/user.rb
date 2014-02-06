@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
   has_many :prompts,
     inverse_of: :user,
     dependent: :nullify
+
+  acts_as_voter
 end
