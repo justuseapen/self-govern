@@ -11,17 +11,18 @@ class ChoicesController < ApplicationController
   end
 
   def create
-    @choice = Choice.new(choice_params)
+    @prompt = Prompt.find(params[:prompt_id])
+    @choice = @prompt.choices.build(choice_params)
+    @choice.user = current_user
     if @choice.save
-      flash[:notice] = 'Choice added!'
-      redirect_to root_path
+      redirect_to prompt_path(@prompt), notice: 'Choice added!'
     else
-      flash[:notice] = 'Please enter a valid choice'
+      render template: "prompts/show", notice: 'Please enter a valid choice'
     end
   end
 
   protected
   def choice_params
-    params.require(:choice).permit(:text, :prompt_id, :user_id)
+    params.require(:choice).permit(:text)
   end
 end

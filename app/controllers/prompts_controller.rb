@@ -13,6 +13,12 @@ class PromptsController < ApplicationController
     end
   end
 
+  def show
+    @prompt = Prompt.find(params[:id])
+    @choices = @prompt.choices
+    @choice = Choice.new
+  end
+
   private
 
   def prompt_params

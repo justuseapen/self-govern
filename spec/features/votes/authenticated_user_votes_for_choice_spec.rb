@@ -1,12 +1,13 @@
 require 'spec_helper'
 
 feature "signed in users can vote and unvote for choices" do
-  user = FactoryGirl.create(:user)
+  let(:user) { FactoryGirl.create(:user) }
   scenario "authenticated user votes for choice" do
     prompt = FactoryGirl.create(:prompt)
     choice = FactoryGirl.create(:choice, prompt: prompt)
-    visit root_path
+    visit prompt_path
     sign_in_as(user)
+    save_and_open_page
     click_button(choice)
     expect(page).to have_content("You've successfully voted for")
   end

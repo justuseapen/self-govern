@@ -9,6 +9,6 @@ module Authentication
 
   def sign_out
     visit root_path
-    click_on 'Sign Out'
+    click_on 'Logout'
   end
 end
