@@ -16,5 +16,6 @@
       <%= link_to "Vote", vote_prompt_path(prompt) %>
     <% end %>
   <% end %>
+  <%= prompt.votes.size %>
   <%= link_to prompt.text, prompt_path(prompt) %><br />
 <% end %>
