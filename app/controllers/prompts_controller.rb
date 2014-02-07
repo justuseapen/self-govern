@@ -15,7 +15,7 @@ class PromptsController < ApplicationController
 
   def show
     @prompt = Prompt.find(params[:id])
-    @choices = @prompt.choices
+    @choices = @prompt.choices.sort_by!(self binding.pry .votes.size).reverse!
     @choice = Choice.new
   end
 

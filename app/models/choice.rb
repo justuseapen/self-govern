@@ -7,5 +7,8 @@ class Choice < ActiveRecord::Base
 
   belongs_to :prompt
   belongs_to :user
-  has_many :votes
+
+  def vote_count
+    self.votes.size
+  end
 end

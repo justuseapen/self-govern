@@ -8,7 +8,7 @@
 
 <br />
 
-<% @prompts.each do |prompt| %>
+<% @prompts.ordered_index_by_popularity.each do |prompt| %>
   <% if current_user %>
     <% if current_user.voted_for? prompt %>
       <%= link_to "Unvote", unvote_prompt_path(prompt) %>
