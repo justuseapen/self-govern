@@ -5,6 +5,12 @@ FactoryGirl.define do
     end
     password 'passw0rd'
     password_confirmation 'passw0rd'
+
+    trait :curator do
+      curator true
+    end
+
+    factory :curator, traits: [:curator]
   end
 
   factory :prompt do
