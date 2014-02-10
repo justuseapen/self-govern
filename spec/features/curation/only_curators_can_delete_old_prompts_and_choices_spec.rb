@@ -4,9 +4,9 @@ feature "curators can curate" do
   scenario "curator deletes prompt" do
     prompt = FactoryGirl.create(:prompt)
     curator = FactoryGirl.create(:curator)
-    visit prompt_path(prompt)
     sign_in_as(curator)
-    click_link "Delete"
+    visit prompt_path(prompt)
+    click_link "Delete Prompt"
     expect(page).to have_content("successfully deleted")
   end
   # scenario "non-curator attempts to delete prompt" do

@@ -1,4 +1,6 @@
 class PromptsController < ApplicationController
+  before_filter :curator?, only: [:destroy]
+
   def new
     @prompt = Prompt.new
   end
@@ -19,6 +21,11 @@ class PromptsController < ApplicationController
     @choice = Choice.new
   end
 
+  def destroy
+    Prompt.find(params[:id]).destroy
+    redirect_to root_path, notice:"The prompt was successfully deleted"
+  end
+
   def vote
     @prompt = Prompt.find(params[:prompt_id])
     @prompt.liked_by current_user
@@ -35,5 +42,8 @@ class PromptsController < ApplicationController
 
   def prompt_params
     params.require(:prompt).permit(:text)
+  end
+  def curator?
+    current_user.curator?
   end
 end

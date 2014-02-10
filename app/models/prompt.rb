@@ -7,7 +7,7 @@ class Prompt < ActiveRecord::Base
     inverse_of: :prompt,
     dependent: :destroy
 
-  belongs_to :user
+  belongs_to :user,
     inverse_of: :prompts
 
   def vote_count

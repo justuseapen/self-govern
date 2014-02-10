@@ -15,3 +15,7 @@
 <% if current_user %>
   <h2><%= render "./choices/form",prompt:@prompt,choice:@choice %></h2>
 <% end %>
+<br>
+<% if current_user.curator? %>
+  <%= link_to "Delete Prompt", prompt_path(@prompt), method: :delete %>
+<% end %>
