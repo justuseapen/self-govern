@@ -10,6 +10,8 @@ gem "jbuilder", "~> 1.2"
 gem "devise"
 gem "simple_form"
 gem 'acts_as_votable', '~> 0.8.0'
+gem 'rails_12factor', group: :production
+
 group :doc do
   gem "sdoc", require: false
 end
@@ -27,3 +29,5 @@ group :development, :test do
   gem "quiet_assets"
   gem "launchy"
 end
+
+ruby "2.0.0"
