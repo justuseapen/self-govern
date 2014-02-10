@@ -1,12 +1,9 @@
 class ChoicesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
+  before_action :archived?, only: [:new,:create,:vote,:unvote]
 
   def index
     @choice = Choice.new
-  end
-
-  def show
-    @choice = Choice.find(params[:id])
   end
 
   def vote
@@ -38,5 +35,8 @@ class ChoicesController < ApplicationController
   protected
   def choice_params
     params.require(:choice).permit(:text)
+  end
+  def archived?
+    Prompt.find(params[:prompt_id]).archive == true
   end
 end

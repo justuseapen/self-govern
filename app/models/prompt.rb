@@ -21,4 +21,10 @@ class Prompt < ActiveRecord::Base
   def self.ordered_index_by_popularity
     Prompt.all.sort_by(&:vote_count).reverse!
   end
+
+  def make_archive
+    self.archive = true
+    self.save
+  end
+
 end

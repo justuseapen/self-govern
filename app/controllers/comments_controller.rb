@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
+  before_action :archived?, only: [:create]
 
   def index
     @comment = Comment.new
@@ -23,5 +24,8 @@ class CommentsController < ApplicationController
   protected
   def comment_params
     params.require(:comment).permit(:text)
+  end
+  def archived?
+    Prompt.find(params[:prompt_id]).archive == true
   end
 end

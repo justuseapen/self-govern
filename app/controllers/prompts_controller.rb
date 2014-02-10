@@ -1,5 +1,6 @@
 class PromptsController < ApplicationController
   before_filter :curator?, only: [:destroy]
+  before_filter :archived?, only:[:vote,:unvote]
 
   def new
     @prompt = Prompt.new
@@ -21,6 +22,20 @@ class PromptsController < ApplicationController
     @choice = Choice.new
     @comments = @prompt.comments
     @comment = Comment.new
+  end
+
+  def archive
+    @prompt = Prompt.find(params[:prompt_id])
+    @prompt.make_archive
+    if @prompt.save
+      redirect_to prompt_path(@prompt), notice:"The prompt was successfully archived"
+    else
+      redirect_to prompt_path(@prompt), notice:"The prompt couldn't be archived! Please try again!"
+    end
+  end
+
+  def archives_index
+    # @prompts = Prompt.all.where(archived == true)
   end
 
   def destroy
@@ -47,5 +62,8 @@ class PromptsController < ApplicationController
   end
   def curator?
     current_user.curator?
+  end
+  def archived?
+    Prompt.find(params[:id]).archive == true
   end
 end
