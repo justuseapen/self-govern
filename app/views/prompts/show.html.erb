@@ -26,6 +26,7 @@
 <br>
 <% @comments.each do |comment| %>
   <%= comment.text %><br />
-  <em><%= "-#{comment.user.email}" %></em><br />
+  <em><%= "-#{comment.user.email}" %></em>  <%= comment.created_at.strftime("on %m/%d/%Y at %I:%M%P %Z") %><br />
+
   <br>
 <% end %>
