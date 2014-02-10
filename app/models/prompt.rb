@@ -3,9 +3,13 @@ class Prompt < ActiveRecord::Base
 
   validates_presence_of :text
 
-  has_many :choices
+  has_many :choices,
+    inverse_of: :prompt,
+    dependent: :destroy
 
   belongs_to :user
+    inverse_of: :prompts,
+    dependent: :nullify
 
   def vote_count
     self.votes.size
