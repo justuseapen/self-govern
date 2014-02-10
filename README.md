@@ -38,3 +38,8 @@ SELF-GOVERN
 1. Justus Eapen - Aye
 2. Dan Carter - Aye
 3. Ajay Vallabh - Aye
+
+###Curators will delete old/implemented prompts. Subject to community oversight.
+1. Justus Eapen - Aye
+2. Dan Carter - Aye
+3. Ajay Vallabh - Not present
