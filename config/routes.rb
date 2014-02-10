@@ -3,6 +3,7 @@ SelfGovern::Application.routes.draw do
 
   resources :prompts, only: [:new,:create,:show,:destroy] do
     resources :choices
+    resources :comments
   end
 
   get "prompt/vote/:prompt_id", to: "prompts#vote", as: "vote_prompt"

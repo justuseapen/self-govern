@@ -19,6 +19,8 @@ class PromptsController < ApplicationController
     @prompt = Prompt.find(params[:id])
     @choices = (@prompt.choices.sort_by!{|choice|Vote.where("votable_type = 'Choice' AND votable_id = #{choice.id}").size}).reverse!
     @choice = Choice.new
+    @comments = @prompt.comments
+    @comment = Comment.new
   end
 
   def destroy

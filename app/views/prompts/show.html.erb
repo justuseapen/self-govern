@@ -1,4 +1,7 @@
 <h1><%= @prompt.text %></h1>
+<% if current_user.curator? %>
+  <%= link_to "Delete Prompt", prompt_path(@prompt), method: :delete %>
+<% end %>
 
 <% @choices.each do |choice| %>
   <% if current_user %>
@@ -16,6 +19,13 @@
   <h2><%= render "./choices/form",prompt:@prompt,choice:@choice %></h2>
 <% end %>
 <br>
-<% if current_user.curator? %>
-  <%= link_to "Delete Prompt", prompt_path(@prompt), method: :delete %>
+
+<% if current_user %>
+  <h2><%= render "./comments/form",prompt:@prompt,comment:@comment %></h2>
+<% end %>
+<br>
+<% @comments.each do |comment| %>
+  <%= comment.text %><br />
+  <em><%= "-#{comment.user.email}" %></em><br />
+  <br>
 <% end %>

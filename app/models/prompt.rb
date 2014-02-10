@@ -7,6 +7,10 @@ class Prompt < ActiveRecord::Base
     inverse_of: :prompt,
     dependent: :destroy
 
+  has_many :comments,
+    inverse_of: :prompt,
+    dependent: :destroy
+
   belongs_to :user,
     inverse_of: :prompts
 

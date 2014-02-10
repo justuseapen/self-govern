@@ -27,4 +27,12 @@ FactoryGirl.define do
     user
     prompt
   end
+
+  factory :comment do
+    sequence :text do |n|
+      "This is my ##{n} favorite prompt!!!!111!11"
+    end
+    user
+    prompt
+  end
 end

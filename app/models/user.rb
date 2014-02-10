@@ -12,5 +12,9 @@ class User < ActiveRecord::Base
     inverse_of: :user,
     dependent: :nullify
 
+  has_many :comments,
+    inverse_of: :user,
+    dependent: :nullify
+
   acts_as_voter
 end

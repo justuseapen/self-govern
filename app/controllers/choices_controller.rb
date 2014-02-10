@@ -1,5 +1,5 @@
 class ChoicesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create] # , :show
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
     @choice = Choice.new

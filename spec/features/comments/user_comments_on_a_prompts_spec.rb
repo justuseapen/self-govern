@@ -28,14 +28,6 @@ feature "User adds a comment to a prompt", %q{
       expect(page).to have_content("Comment added!")
     end
 
-    it "gives an error for invalid comment" do
-      visit prompt_path(prompt)
-
-      click_on "Submit"
-
-      expect(page).to have_cotent("can't be blank")
-    end
-
     it "displays all comments" do
       comment = FactoryGirl.create( :comment, prompt: prompt, user: user )
       visit prompt_path(prompt)
