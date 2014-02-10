@@ -1,7 +1,7 @@
 <h1><%= @prompt.text %> <% if @prompt.archive? %>(Archived)<% end %></h1>
 <% if current_user.curator? %>
-  <%= link_to "Delete Prompt", prompt_path(@prompt), method: :delete %><br>
-  <%= link_to "Archive Prompt", archive_prompt_path(@prompt) %><br>
+  <%= link_to "Delete Prompt", prompt_path(@prompt), method: :delete unless @prompt.archive? %><br>
+  <%= link_to "Archive Prompt", archive_prompt_path(@prompt) unless @prompt.archive? %><br>
 <% end %>
 <br>
 <% @choices.each do |choice| %>

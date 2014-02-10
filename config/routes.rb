@@ -13,6 +13,7 @@ SelfGovern::Application.routes.draw do
   get "choice/unvote/:choice_id", to: "choices#unvote", as: "unvote_choice"
 
   get "prompt/archive/:prompt_id", to: "prompts#archive", as: "archive_prompt"
+  get "pages/archives_index", to: "pages#archives_index", as: "archives_index"
 
   root 'pages#home'
 end
