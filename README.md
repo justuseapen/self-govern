@@ -43,3 +43,8 @@ SELF-GOVERN
 1. Justus Eapen - Aye
 2. Dan Carter - Aye
 3. Ajay Vallabh - Not present
+
+###Deploy Self-Govern to Heroku?
+1. Justus Eapen - Aye
+2. Dan Carter - Aye
+3. Ajay Vallabh - Not present
