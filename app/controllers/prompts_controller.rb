@@ -64,6 +64,6 @@ class PromptsController < ApplicationController
     current_user.curator?
   end
   def archived?
-    Prompt.find(params[:id]).archive == true
+    Prompt.find(params[:prompt_id]).archive == true
   end
 end

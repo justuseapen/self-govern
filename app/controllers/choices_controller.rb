@@ -1,6 +1,5 @@
 class ChoicesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :archived?, only: [:new,:create,:vote,:unvote]
 
   def index
     @choice = Choice.new
