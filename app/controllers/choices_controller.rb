@@ -25,9 +25,11 @@ class ChoicesController < ApplicationController
     @choice = @prompt.choices.build(choice_params)
     @choice.user = current_user
     if @choice.save
-      redirect_to prompt_path(@prompt), notice: 'Choice added!'
+      flash[:success] = 'Choice added!'
+      redirect_to prompt_path(@prompt)
     else
-      render template: "prompts/show", notice: 'Please enter a valid choice'
+      flash[:alert] = 'Please enter a valid choice'
+      render template: "prompts/show"
     end
   end
 

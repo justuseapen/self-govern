@@ -17,7 +17,7 @@ feature "Registered user logs in", %q{
     it "logs into the app" do
       visit root_path
 
-      click_on 'Login'
+      click_on 'Sign In'
 
       fill_in "Email", with: user.email
       fill_in "Password", with: user.password
@@ -32,7 +32,7 @@ feature "Registered user logs in", %q{
     it "displays error if password is incorrect" do
       visit root_path
 
-      click_on 'Login'
+      click_on 'Sign In'
 
       fill_in "Email", with: user.email
       fill_in "Password", with: 'WR0NG'
@@ -45,7 +45,7 @@ feature "Registered user logs in", %q{
     it "displays error if email is incorrect" do
       visit root_path
 
-      click_on 'Login'
+      click_on 'Sign In'
 
       fill_in "Email", with: "WR0NG"
       fill_in "Password", with: user.password

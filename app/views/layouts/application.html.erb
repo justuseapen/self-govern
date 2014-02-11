@@ -1,22 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>SelfGovern</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title><%= content_for?(:title) ? yield(:title) : "Self Govern" %></title>
+
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "vendor/modernizr" %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
-<%= link_to "Self-Govern", root_path %>
-<br>
-<% flash.each do |name, msg| %>
-  <div data-alert class="alert-box">
-    <%= msg %>
-    <a href="#" class="close">&times;</a>
-  </div>
-<% end %>
-
-<%= yield %>
-
-</body>
+  <!-- BEGIN TOP NAV BAR -->
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="<%= root_path %>">Self Govern</a></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <div class="button-bar">
+          <ul class="button-group right">
+            <% if user_signed_in? %>
+            <li class="navbuttons"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+            <% else %>
+            <li class="menu"><%= link_to 'Sign In', new_user_session_path %></li>
+            <li class="navbuttons"><%= link_to 'Sign Up', new_user_registration_path %></li>
+              <!--
+              <li><a href="<%#= new_user_session_path %>" class="button">Sign In</a></li>
+              <li><a href="<%#= new_user_registration_path %>" class="button">Sign Up</a></li>
+              -->
+              <% end %>
+            </ul>
+          </div>
+        </ul>
+        <!-- <ul class="left">
+          <li></li>
+        </ul> -->
+      </section>
+    </nav>
+    <!-- END TOP NAV BAR -->
+    <% flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, class: "#{name} alert-box" %>
+    <% end -%>
+    <%= yield %>
+     <%= javascript_include_tag "application" %>
+  </body>
 </html>

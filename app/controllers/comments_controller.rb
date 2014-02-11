@@ -15,9 +15,11 @@ class CommentsController < ApplicationController
     @comment = @prompt.comments.build(comment_params)
     @comment.user = current_user
     if @comment.save
-      redirect_to prompt_path(@prompt), notice: 'Comment added!'
+      flash[:success] = 'Comment added!'
+      redirect_to prompt_path(@prompt)
     else
-      render template: "prompts/show", notice: 'Please enter a valid comment'
+      flash[:alert] = 'Please enter a valid comment'
+      render template: "prompts/show"
     end
   end
 

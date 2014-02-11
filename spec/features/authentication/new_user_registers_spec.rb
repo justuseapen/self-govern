@@ -16,13 +16,13 @@ feature "New user creates an account", %q{
   context "provides account information" do
     it "creates a new account" do
       visit root_path
-      click_on "Sign up"
+      click_on "Sign Up"
 
       fill_in "Email", with: "test@mail.com"
       fill_in "Password", with: "passw0rd"
       fill_in "Password confirmation", with: "passw0rd"
 
-      click_on "Sign up"
+      click_on "Sign Up"
 
       expect(page).to have_content("You have signed up successfully.")
     end
@@ -31,9 +31,9 @@ feature "New user creates an account", %q{
   context "provides invalid account information" do
     it "displays errors when invalid info is given" do
       visit root_path
-      click_on "Sign up"
+      click_on "Sign Up"
 
-      click_on "Sign up"
+      click_on "Sign Up"
 
       expect(page).to have_content("Email can't be blank")
       expect(page).to have_content("Password can't be blank")
@@ -41,25 +41,25 @@ feature "New user creates an account", %q{
 
     it "displays error if passwords don't match" do
       visit root_path
-      click_on "Sign up"
+      click_on "Sign Up"
 
       fill_in "Password", with: "passw0rd"
       fill_in "Password confirmation", with: "passw1rd"
 
-      click_on "Sign up"
+      click_on "Sign Up"
 
       expect(page).to have_content("Password confirmation doesn't match Password")
     end
 
     it "displays error when invalid email is given" do
       visit root_path
-      click_on "Sign up"
+      click_on "Sign Up"
 
       fill_in "Email", with: "test@mailcom"
       fill_in "Password", with: "passw0rd"
       fill_in "Password confirmation", with: "passw0rd"
 
-      click_on "Sign up"
+      click_on "Sign Up"
 
       expect(page).to have_content("Email is invalid")
     end
