@@ -11,7 +11,6 @@ gem "devise"
 gem "simple_form"
 gem 'acts_as_votable', '~> 0.8.0'
 gem 'rails_12factor', group: :production
-gem 'foundation-rails'
 
 group :doc do
   gem "sdoc", require: false

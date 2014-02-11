@@ -1,61 +1,23 @@
-<div class="row">
-  <p>&nbsp;</p>
-  <div class="small-2 columns"></div>
-  <div class="small-8 small-centered center columns">
-    <h1 style="font-weight:bold;">Welcome to Self Govern</h1>
-    <h3>Your Ideas. Your Choices. Your Decisions.</h3>
-  </div>
-  <div class="small-2 columns"></div>
-</div>
+<% if current_user %>
+  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+  <%= link_to "Add prompt", new_prompt_path %>
+<% else %>
+  <%= link_to "Login", new_user_session_path %>
+  <%= link_to "Sign up", new_user_registration_path %>
+<% end %>
 
-<div class="row">
-  <div class="small-12 center small-centered columns">
-    <hr class="faded">
-  </div>
-</div>
+<br />
 
-<div class="row">
-  <div class="small-8 center small-centered columns">
-    <% if current_user %>
-    <%= link_to "Add Prompt", new_prompt_path, class: 'button' %>
-    <%= link_to "Archives Index", archives_index_path, class: 'button' %>
-    <% end %>
-  </div>
-  <div class="small-12 small-centered center columns">
+<% @prompts.ordered_index_by_popularity.each do |prompt| %>
   <% if current_user %>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Votes</th>
-          <% if !current_user.nil? %>
-            <th>Action</th>
-          <% end %>
-          <th colspan="8">Prompt</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @prompts.ordered_index_by_popularity.each do |prompt| %>
-        <tr>
-          <td class="center">
-            <%= prompt.votes.size %>
-          </td>
-
-            <td>
-              <% if current_user.voted_for? prompt %>
-                <%= link_to "Unvote", unvote_prompt_path(prompt) %>
-              <% else %>
-                <%= link_to "Vote", vote_prompt_path(prompt) %>
-              <% end %>
-            </td>
-          <td colspan="8">
-            <%= link_to prompt.text, prompt_path(prompt) %><br />
-          </td>
-        <% end %>
-        </tr>
-      </tbody>
-    </table>
-  <% else %>
-  <h3>Please <%= link_to "sign in", new_user_session_path %> to access the site.</h3>
+    <% if current_user.voted_for? prompt %>
+      <%= link_to "Unvote", unvote_prompt_path(prompt) %>
+    <% else %>
+      <%= link_to "Vote", vote_prompt_path(prompt) %>
+    <% end %>
   <% end %>
-  </div>
-</div>
+  <%= prompt.votes.size %>
+  <%= link_to prompt.text, prompt_path(prompt) %><br />
+<% end %>
+<br>
+<%= link_to "Archives Index", archives_index_path %>

@@ -10,8 +10,7 @@ class PromptsController < ApplicationController
     @prompt = current_user.prompts.build(prompt_params)
 
     if @prompt.save
-      flash[:success] = 'Your prompt was successfully added!'
-      redirect_to root_path
+      redirect_to root_path, notice: 'Your prompt was successfully added'
     else
       render :new
     end
@@ -29,11 +28,9 @@ class PromptsController < ApplicationController
     @prompt = Prompt.find(params[:prompt_id])
     @prompt.make_archive
     if @prompt.save
-      flash[:success] = 'The prompt was successfully archived!'
-      redirect_to prompt_path(@prompt)
+      redirect_to prompt_path(@prompt), notice:"The prompt was successfully archived"
     else
-      flash[:alert] = "The prompt couldn't be archived! Please try again!"
-      redirect_to prompt_path(@prompt)
+      redirect_to prompt_path(@prompt), notice:"The prompt couldn't be archived! Please try again!"
     end
   end
 
@@ -43,8 +40,7 @@ class PromptsController < ApplicationController
 
   def destroy
     Prompt.find(params[:id]).destroy
-    flash[:notice] = 'The prompt was successfully deleted!'
-    redirect_to root_path
+    redirect_to root_path, notice:"The prompt was successfully deleted"
   end
 
   def vote

@@ -1,4 +1,4 @@
 <%= simple_form_for [prompt,choice] do |f| %>
-<%= f.input :text,label: false, placeholder: 'Add a choice' %>
-<%= f.button :submit, 'Add New Choice', class: 'button small'%>
+<%= f.input :text,label:"Choice:" %>
+<%= f.button :submit, 'Add New Choice' %>
 <% end %>

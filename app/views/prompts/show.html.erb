@@ -1,38 +1,33 @@
-<div class="row">
-  <div class="small-3 columns"></div>
-  <div class="small-6 small-centered columns">
-    <h2><%= @prompt.text %> <% if @prompt.archive? %>(Archived)<% end %></h2>
-    <% if current_user.curator? %>
-      <%= link_to "Delete Prompt", prompt_path(@prompt), method: :delete unless @prompt.archive? %><br>
-      <%= link_to "Archive Prompt", archive_prompt_path(@prompt) unless @prompt.archive? %><br>
+<h1><%= @prompt.text %> <% if @prompt.archive? %>(Archived)<% end %></h1>
+<% if current_user.curator? %>
+  <%= link_to "Delete Prompt", prompt_path(@prompt), method: :delete unless @prompt.archive? %><br>
+  <%= link_to "Archive Prompt", archive_prompt_path(@prompt) unless @prompt.archive? %><br>
+<% end %>
+<br>
+<% @choices.each do |choice| %>
+  <% if current_user %>
+    <% if current_user.voted_for? choice %>
+      <%= link_to "Unvote", unvote_choice_path(choice) unless @prompt.archive? %>
+    <% else %>
+      <%= link_to "Vote", vote_choice_path(choice) unless @prompt.archive? %>
     <% end %>
-    <br/>
+  <% end %>
+  <%= Vote.where("votable_type = 'Choice' AND votable_id = #{choice.id}").size %>
+  <%= choice.text %><br />
+<% end %>
 
-    <% @choices.each do |choice| %>
-      <% if current_user %>
-        <% if current_user.voted_for? choice %>
-          <%= link_to "Unvote", unvote_choice_path(choice) unless @prompt.archive? %>
-        <% else %>
-          <%= link_to "Vote", vote_choice_path(choice) unless @prompt.archive? %>
-        <% end %>
-      <% end %>
-      <%= Vote.where("votable_type = 'Choice' AND votable_id = #{choice.id}").size %>
-      <%= choice.text %><br />
-    <% end %>
-    <p></p>
-    <% if current_user %>
-      <h2><%= render "./choices/form",prompt:@prompt,choice:@choice unless @prompt.archive? %></h2>
-    <% end %>
-    <% if current_user %>
-      <h2><%= render "./comments/form",prompt:@prompt,comment:@comment unless @prompt.archive? %></h2>
-    <% end %>
-    <br>
-    <% @comments.reverse.each do |comment| %>
-      <%= comment.text %><br />
-      <em><%= "#{comment.user.email}" %></em>  (<%= comment.created_at.strftime("%B %d, %Y at %l:%M%P %Z") %>)
-    <p></p>
-    <% end %>
+<% if current_user %>
+  <h2><%= render "./choices/form",prompt:@prompt,choice:@choice unless @prompt.archive? %></h2>
+<% end %>
+<br>
 
-  </div>
-  <div class="small-3 columns"></div>
-</div>
+<% if current_user %>
+  <h2><%= render "./comments/form",prompt:@prompt,comment:@comment unless @prompt.archive? %></h2>
+<% end %>
+<br>
+<% @comments.each do |comment| %>
+  <%= comment.text %><br />
+  <em><%= "-#{comment.user.email}" %></em>  <%= comment.created_at.strftime("on %m/%d/%Y at %l:%M%P %Z") %><br />
+
+  <br>
+<% end %>
