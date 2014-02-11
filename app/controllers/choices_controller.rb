@@ -5,10 +5,6 @@ class ChoicesController < ApplicationController
     @choice = Choice.new
   end
 
-  def show
-    @choice = Choice.find(params[:id])
-  end
-
   def vote
     @choice = Choice.find(params[:choice_id])
     vote = Vote.new(voter_type: "User", voter_id: current_user.id,
@@ -38,5 +34,8 @@ class ChoicesController < ApplicationController
   protected
   def choice_params
     params.require(:choice).permit(:text)
+  end
+  def archived?
+    Prompt.find(params[:prompt_id]).archive == true
   end
 end

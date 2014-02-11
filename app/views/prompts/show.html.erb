@@ -1,14 +1,15 @@
-<h1><%= @prompt.text %></h1>
+<h1><%= @prompt.text %> <% if @prompt.archive? %>(Archived)<% end %></h1>
 <% if current_user.curator? %>
-  <%= link_to "Delete Prompt", prompt_path(@prompt), method: :delete %>
+  <%= link_to "Delete Prompt", prompt_path(@prompt), method: :delete unless @prompt.archive? %><br>
+  <%= link_to "Archive Prompt", archive_prompt_path(@prompt) unless @prompt.archive? %><br>
 <% end %>
-
+<br>
 <% @choices.each do |choice| %>
   <% if current_user %>
     <% if current_user.voted_for? choice %>
-      <%= link_to "Unvote", unvote_choice_path(choice) %>
+      <%= link_to "Unvote", unvote_choice_path(choice) unless @prompt.archive? %>
     <% else %>
-      <%= link_to "Vote", vote_choice_path(choice) %>
+      <%= link_to "Vote", vote_choice_path(choice) unless @prompt.archive? %>
     <% end %>
   <% end %>
   <%= Vote.where("votable_type = 'Choice' AND votable_id = #{choice.id}").size %>
@@ -16,12 +17,12 @@
 <% end %>
 
 <% if current_user %>
-  <h2><%= render "./choices/form",prompt:@prompt,choice:@choice %></h2>
+  <h2><%= render "./choices/form",prompt:@prompt,choice:@choice unless @prompt.archive? %></h2>
 <% end %>
 <br>
 
 <% if current_user %>
-  <h2><%= render "./comments/form",prompt:@prompt,comment:@comment %></h2>
+  <h2><%= render "./comments/form",prompt:@prompt,comment:@comment unless @prompt.archive? %></h2>
 <% end %>
 <br>
 <% @comments.each do |comment| %>
