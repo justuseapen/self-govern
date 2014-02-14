@@ -28,6 +28,7 @@ group :development, :test do
   gem "capybara"
   gem "quiet_assets"
   gem "launchy"
+  gem "spring"
 end
 
 ruby "2.0.0"
