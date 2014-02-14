@@ -24,7 +24,7 @@ feature "New user creates an account", %q{
 
       click_on "Sign up"
 
-      expect(page).to have_content("Check your inbox for a confirmation email so you can sign in and begin governing!")
+      expect(page).to have_content("A message with a confirmation link has been sent to your email address. Please open the link to activate your account.")
     end
   end
 

@@ -5,6 +5,7 @@ FactoryGirl.define do
     end
     password 'passw0rd'
     password_confirmation 'passw0rd'
+    confirmed_at DateTime.now
 
     trait :curator do
       curator true

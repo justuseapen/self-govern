@@ -1,5 +1,5 @@
 SelfGovern::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations" }
 
   resources :prompts, only: [:new,:create,:show,:destroy] do
     resources :choices
