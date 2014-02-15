@@ -3,14 +3,18 @@ class ChoicesController < ApplicationController
 
   def index
     @choice = Choice.new
-  end
-
+  end  
+      
   def vote
     @choice = Choice.find(params[:choice_id])
-    vote = Vote.new(voter_type: "User", voter_id: current_user.id,
+    if user_already_voted?
+      redirect_to prompt_path(@choice.prompt), notice: "You may only vote for one choice per prompt"
+    else
+      vote = Vote.new(voter_type: "User", voter_id: current_user.id,
                     votable_type: "Choice", votable_id: @choice.id)
-    vote.save
-    redirect_to prompt_path(@choice.prompt)
+      vote.save
+      redirect_to prompt_path(@choice.prompt)
+    end
   end
 
   def unvote
@@ -38,4 +42,12 @@ class ChoicesController < ApplicationController
   def archived?
     Prompt.find(params[:prompt_id]).archive == true
   end
+  def user_already_voted?
+    @choice.prompt.choices.each do |choice|
+      if current_user.voted_for?(choice)
+        true
+      end
+    end
+  end
+  
 end
