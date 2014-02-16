@@ -10,5 +10,4 @@ describe User do
   it { should have_many(:choices).dependent(:nullify) }
   it { should have_many(:comments).dependent(:nullify) }
 
-  it { should validate_uniqueness_of :email }
 end

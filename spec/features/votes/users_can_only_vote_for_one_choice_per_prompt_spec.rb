@@ -15,7 +15,7 @@ feature "only one choice can be voted on per prompt" do
     
     it "cannot vote for second choice" do
       click_link("Vote")
-      expect(page).to have_content("You may only vote for one choice per prompt")
+      expect(page).to have_content("Vote")
     end
   end
 end

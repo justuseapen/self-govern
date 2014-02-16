@@ -1,2 +1,2 @@
-class Vote < ActiveRecord::Base
+class Vote < ::ActiveRecord::Base
 end

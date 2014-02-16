@@ -17,4 +17,7 @@ class User < ActiveRecord::Base
     dependent: :nullify
 
   acts_as_voter
+  
+  def previously_voted_for_another_choice_within(prompt)
+  end
 end
