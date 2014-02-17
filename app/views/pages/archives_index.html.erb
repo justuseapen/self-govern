@@ -11,5 +11,5 @@
 
 <% @prompts.each do |prompt| %>
   <%= prompt.votes.size %>
-<%= link_to "#{prompt.text} #{'[IMMUTABLE]' unless prompt.immutable.blank?}", prompt_path(prompt) %><br />
+<%= link_to prompt.display_text, prompt_path(prompt) %><br />
 <% end %>
