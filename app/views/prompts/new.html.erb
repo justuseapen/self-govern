@@ -13,6 +13,8 @@
 
   <%= f.label :text %><br />
   <%= f.text_field :text %><br />
+  <%= f.label :immutable %>?(Immutable prompts, once passed can never be reversed.)<br />
+  <%= f.check_box :immutable %><br />
 
   <%= f.submit %>
 

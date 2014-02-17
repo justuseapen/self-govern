@@ -58,7 +58,7 @@ class PromptsController < ApplicationController
   private
 
   def prompt_params
-    params.require(:prompt).permit(:text)
+    params.require(:prompt).permit(:text,:immutable)
   end
   def curator?
     current_user.curator?

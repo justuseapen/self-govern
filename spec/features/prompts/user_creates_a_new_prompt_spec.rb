@@ -17,7 +17,7 @@ feature "User creates a new prompt", %q{
     sign_in_as(user)
   end
 
-  context "user supplies text" do
+  context "user supplies text for mutable prompt" do
     it "creates a new prompt" do
       visit root_path
 
@@ -28,6 +28,7 @@ feature "User creates a new prompt", %q{
       click_on "Create Prompt"
 
       expect(page).to have_content("Your prompt was successfully added")
+      expect(page).to have_content("Should the background be pink?")
     end
     it "creates an immutable prompt" do
       visit new_prompt_path
