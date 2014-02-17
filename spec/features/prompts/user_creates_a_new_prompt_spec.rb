@@ -36,6 +36,8 @@ feature "User creates a new prompt", %q{
       check ("Immutable")
       click_on "Create Prompt"
       expect(page).to have_content("Should we make babies? [IMMUTABLE]")
+      click_on "Should we make babies?"
+      expect(page).to have_content("Should we make babies? [IMMUTABLE]")
     end
   end
 

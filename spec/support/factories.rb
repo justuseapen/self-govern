@@ -18,6 +18,7 @@ FactoryGirl.define do
     sequence :text do |n|
       "Is #{n} the best number?"
     end
+    immutable false
     user
   end
 

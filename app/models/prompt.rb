@@ -26,5 +26,9 @@ class Prompt < ActiveRecord::Base
     self.archive = true
     self.save
   end
+  
+  def display_text
+    "#{self.text} #{'[IMMUTABLE]' unless self.immutable.blank?}"
+  end
 
 end
