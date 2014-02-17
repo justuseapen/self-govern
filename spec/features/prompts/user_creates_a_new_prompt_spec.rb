@@ -29,6 +29,13 @@ feature "User creates a new prompt", %q{
 
       expect(page).to have_content("Your prompt was successfully added")
     end
+    it "creates an immutable prompt" do
+      visit new_prompt_path
+      fill_in "Text", with: "Should we make babies?"
+      check ("Immutable")
+      click_on "Create Prompt"
+      expect(page).to have_content("Should we make babies? [IMMUTABLE]")
+    end
   end
 
   context "user supplies no text" do

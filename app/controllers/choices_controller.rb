@@ -11,7 +11,6 @@ class ChoicesController < ApplicationController
     vote = Vote.new(voter_type: "User", voter_id: current_user.id,
                     votable_type: "Choice", votable_id: @choice.id)
     vote.save
-    
     #Unvote other choices...
     @prompt.choices.each do |choice|
       if choice != @choice
