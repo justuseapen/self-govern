@@ -6,15 +6,21 @@ gem "sass-rails", "~> 4.0.0"
 gem "uglifier", ">= 1.3.0"
 gem "coffee-rails", "~> 4.0.0"
 gem "jquery-rails"
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
 gem "jbuilder", "~> 1.2"
 gem "devise"
 gem "simple_form"
 gem 'acts_as_votable', '~> 0.8.0'
 gem 'rails_12factor', group: :production
+gem 'gem-open'
 
 group :doc do
   gem "sdoc", require: false
 end
+
+
 
 group :development, :test do
   gem "pry-rails"
