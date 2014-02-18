@@ -4,19 +4,37 @@
   <title>SelfGovern</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= link_to "Self-Govern", root_path %> // <a href="https://github.com/justuseapen/self-govern/blob/master/README.md">About</a>
-<br>
+
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="logo" href="<%= root_path %>"></a>
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="https://github.com/justuseapen/self-govern/blob/master/README.md">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <% flash.each do |name, msg| %>
   <div data-alert class="alert-box">
     <%= msg %>
     <a href="#" class="close">&times;</a>
   </div>
 <% end %>
-
-<%= yield %>
+<div id="content" class="container">
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4"><%= yield %></div>
+    <div class="col-sm-4"></div>
+  </div>
+</div>
 
 </body>
 </html>
