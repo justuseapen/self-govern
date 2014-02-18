@@ -1,4 +1,6 @@
-<h1><%= @prompt.display_text %> <% if @prompt.archive? %>(Archived)<% end %></h1>
+<h3><%= @prompt.display_text %> <% if @prompt.archive? %>(Archived)<% end %></h3>
+Posted by: <%= @prompt.user.email %> on <%= @prompt.created_at.strftime("%m/%d/%Y at %l:%M%P %Z") %>
+<br/>
 <% if current_user.curator? %>
   <%= link_to "Delete Prompt", prompt_path(@prompt), method: :delete unless @prompt.archive? %><br>
   <%= link_to "Archive Prompt", archive_prompt_path(@prompt) unless @prompt.archive? %><br>
