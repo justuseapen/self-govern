@@ -15,7 +15,8 @@ class ChoicesController < ApplicationController
     @prompt.choices.each do |choice|
       if choice != @choice
         Vote.where(voter_type: "User", voter_id: current_user.id,
-          votable_type: "Choice", votable_id: choice.id).first.destroy unless choice.votes.blank?
+          votable_type: "Choice", votable_id: choice.id).first.destroy unless Vote.where(voter_type: "User", voter_id: current_user.id,
+          votable_type: "Choice", votable_id: choice.id).blank?
       end
     end
     redirect_to prompt_path(@choice.prompt)
