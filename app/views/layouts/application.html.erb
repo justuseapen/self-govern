@@ -15,6 +15,9 @@
       <a class="logo" href="<%= root_path %>"></a>
       <ul class="nav navbar-nav">
         <li>
+          <%= link_to "Archives Index", archives_index_path %>
+        </li>
+        <li>
           <a href="https://github.com/justuseapen/self-govern/blob/master/README.md">About</a>
         </li>
         <% if current_user %>
