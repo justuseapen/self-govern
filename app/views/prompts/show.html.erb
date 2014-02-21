@@ -1,4 +1,4 @@
-<h3><%= @prompt.display_text %> <% if @prompt.archive? %>(Archived)<% end %></h3>
+<h3><%= @prompt.display_text %> <% if @prompt.archive? %>(Archived at <%= @prompt.updated_at.strftime("%m/%d/%Y at %l:%M%P %Z") %> <% end %></h3>
 Posted by: <%= @prompt.user.email %> on <%= @prompt.created_at.strftime("%m/%d/%Y at %l:%M%P %Z") %>
 <br/>
 <% if current_user.curator? %>
