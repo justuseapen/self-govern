@@ -26,9 +26,14 @@ class Prompt < ActiveRecord::Base
     self.archive = true
     self.save
   end
-  
+
   def display_text
     "#{self.text} #{'[IMMUTABLE]' unless self.immutable.blank?}"
+  end
+
+  def is_deletable?
+    difference = (Time.now - 2592000)
+    (self.created_at < difference) && (self.votes.count == 0)
   end
 
 end

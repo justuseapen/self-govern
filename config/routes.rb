@@ -1,3 +1,6 @@
+require 'sidekiq/web'
+require 'sidetiq/web'
+
 SelfGovern::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => "registrations" }
 

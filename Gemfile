@@ -15,6 +15,9 @@ gem "simple_form"
 gem 'acts_as_votable', '~> 0.8.0'
 gem 'rails_12factor', group: :production
 gem 'gem-open'
+gem 'sidekiq'
+gem 'sidetiq'
+
 
 group :doc do
   gem "sdoc", require: false
