@@ -6,16 +6,17 @@
 Posted by: <%= @prompt.user.email %> on <%= @prompt.created_at.strftime("%m/%d/%Y at %l:%M%P %Z") %>
 <br/>
 <% if current_user.curator? %>
-  <%= link_to "Delete Prompt", prompt_path(@prompt), method: :delete unless @prompt.archive? %><br>
+  <%= link_to "Delete Prompt", prompt_path(@prompt), method: :delete unless @prompt.archive? || @prompt.to_do? %><br>
   <%= link_to "Archive Prompt", archive_prompt_path(@prompt) unless @prompt.archive? %><br>
+  <%= link_to "Add to To Do", to_do_prompt_path(@prompt) unless @prompt.archive? || @prompt.to_do? %><br>
 <% end %>
 <br>
 <% @choices.each do |choice| %>
   <% if current_user %>
     <% if current_user.voted_for? choice %>
-      <%= link_to "Unvote", unvote_choice_path(choice) unless @prompt.archive? %>
+      <%= link_to "Unvote", unvote_choice_path(choice) unless @prompt.archive? || @prompt.to_do? %>
     <% else %>
-      <%= link_to "Vote", vote_choice_path(choice) unless @prompt.archive? %>
+      <%= link_to "Vote", vote_choice_path(choice) unless @prompt.archive? || @prompt.to_do? %>
     <% end %>
   <% end %>
   <%= Vote.where("votable_type = 'Choice' AND votable_id = #{choice.id}").size %>
@@ -23,12 +24,12 @@ Posted by: <%= @prompt.user.email %> on <%= @prompt.created_at.strftime("%m/%d/%
 <% end %>
 
 <% if current_user %>
-  <h2><%= render "./choices/form",prompt:@prompt,choice:@choice unless @prompt.archive? %></h2>
+  <h2><%= render "./choices/form",prompt:@prompt,choice:@choice unless @prompt.archive? || @prompt.to_do? %></h2>
 <% end %>
 <br>
 
 <% if current_user %>
-  <h2><%= render "./comments/form",prompt:@prompt,comment:@comment unless @prompt.archive? %></h2>
+  <h2><%= render "./comments/form",prompt:@prompt,comment:@comment unless @prompt.archive? || @prompt.to_do? %></h2>
 <% end %>
 <br>
 <% @comments.each do |comment| %>

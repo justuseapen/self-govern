@@ -1,0 +1,8 @@
+<h1>To Do List</h1>
+
+<br />
+
+<% @prompts.each do |prompt| %>
+  <%= prompt.votes.size %>
+<%= link_to prompt.display_text, prompt_path(prompt) %><br />
+<% end %>
