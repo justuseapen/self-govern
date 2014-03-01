@@ -21,5 +21,7 @@ SelfGovern::Application.routes.draw do
   get "prompt/to_do/:prompt_id", to: "prompts#to_do", as: "to_do_prompt"
   get "pages/to_do_index", to: "pages#to_do_index", as: "to_do_index"
 
+  get "pages/analytics", to: "pages#analytics", as: "analytics"
+
   root 'pages#home'
 end

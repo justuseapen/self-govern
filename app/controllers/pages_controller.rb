@@ -10,4 +10,8 @@ class PagesController < ApplicationController
   def to_do_index
     @prompts = Prompt.all.where("to_do and not archive")
   end
+
+  def analytics
+    @count = User.select { |user| user.confirmed? }.count
+  end
 end
