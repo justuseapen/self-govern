@@ -36,7 +36,7 @@ class PromptsController < ApplicationController
 
   def to_do
     @prompt = Prompt.find(params[:prompt_id])
-    @prompt.make_archive
+    @prompt.make_to_do
     if @prompt.save
       redirect_to prompt_path(@prompt), notice:"The prompt was successfully archived"
     else

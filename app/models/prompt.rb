@@ -23,7 +23,13 @@ class Prompt < ActiveRecord::Base
   end
 
   def make_archive
+    self.to_do = false
     self.archive = true
+    self.save
+  end
+
+  def make_to_do
+    self.to_do = true
     self.save
   end
 
