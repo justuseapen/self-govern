@@ -3,7 +3,6 @@
 <br />
 
 <h4>Registered Users: <%= @count %></h4><br />
-
-<h4>Active Users</h4>
-<%- time_range = 6.days.ago..Time.now %>
-<%= line_chart User.group_by_day(:last_sign_in_at, Time.zone, time_range).count %>
+<!-- <h4>Active Users</h4> -->
+<!-- <%- time_range = 6.days.ago..Time.now %>
+<%= line_chart User.group_by_day(:last_sign_in_at, Time.zone, time_range).count %> -->
