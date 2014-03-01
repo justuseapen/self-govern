@@ -17,13 +17,12 @@ gem 'rails_12factor', group: :production
 gem 'gem-open'
 gem 'sidekiq'
 gem 'sidetiq'
-
+gem 'chartkick'
+gem 'groupdate'
 
 group :doc do
   gem "sdoc", require: false
 end
-
-
 
 group :development, :test do
   gem "pry-rails"

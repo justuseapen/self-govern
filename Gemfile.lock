@@ -45,6 +45,7 @@ GEM
       xpath (~> 2.0)
     celluloid (0.15.2)
       timers (~> 1.1.0)
+    chartkick (1.2.1)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -71,6 +72,8 @@ GEM
       factory_girl (~> 4.3.0)
       railties (>= 3.0.0)
     gem-open (0.1.7)
+    groupdate (1.0.4)
+      activerecord (>= 3.0.0)
     hike (1.2.3)
     i18n (0.6.9)
     ice_cube (0.11.3)
@@ -224,10 +227,12 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   capybara
+  chartkick
   coffee-rails (~> 4.0.0)
   devise
   factory_girl_rails
   gem-open
+  groupdate
   jbuilder (~> 1.2)
   jquery-rails
   launchy
