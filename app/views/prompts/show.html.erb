@@ -28,8 +28,8 @@ Posted by: <%= @prompt.user.email %> on <%= @prompt.created_at.strftime("%m/%d/%
 <% end %>
 <br>
 
-<% if current_user %>
-  <h2><%= render "./comments/form",prompt:@prompt,comment:@comment unless @prompt.archive? || @prompt.to_do? %></h2>
+<% if current_user.curator? %>
+  <h2><%= render "./comments/form",prompt:@prompt,comment:@comment unless @prompt.archive? %></h2>
 <% end %>
 <br>
 <% @comments.each do |comment| %>
