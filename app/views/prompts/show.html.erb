@@ -29,7 +29,7 @@ Posted by: <%= @prompt.user.email %> on <%= @prompt.created_at.strftime("%m/%d/%
 <br>
 
 <% if current_user %>
-  <% cant_comment = @prompt.archive? || (@prompt.to_do? && !current_user.curator? %>
+  <% cant_comment = (@prompt.archive? || (@prompt.to_do? && !current_user.curator?)) %>
   <h2><%= render "./comments/form",prompt:@prompt,comment:@comment unless cant_comment %></h2>
 <% end %>
 
