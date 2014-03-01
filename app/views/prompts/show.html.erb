@@ -33,9 +33,6 @@ Posted by: <%= @prompt.user.email %> on <%= @prompt.created_at.strftime("%m/%d/%
   <h2><%= render "./comments/form",prompt:@prompt,comment:@comment unless cant_comment %></h2>
 <% end %>
 
-<% if current_user.curator %>
-  <h2><%= render "./comments/form",prompt:@prompt,comment:@comment unless @prompt.archive? %></h2>
-<% end %>
 <br>
 <% @comments.each do |comment| %>
   <%= comment.text %><br />
